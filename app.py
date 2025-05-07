@@ -7,12 +7,12 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # We ask the Pokémon API for the first 150 Pokémon.
-    response = requests.get("https://pokeapi.co/api/v2/pokemon?limit=150")
+    response = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
     data = response.json()
     pokemon_list = data['results']
     
     # We create a list to store details for each Pokémon.
-    pokemons = []
+    cards = []
     
     for pokemon in pokemon_list:
         # Each Pokémon has a URL like "https://pokeapi.co/api/v2/pokemon/1/"
@@ -23,20 +23,20 @@ def index():
         # We use the ID to build an image URL.
         image_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png"
         
-        pokemons.append({
+        cards.append({
             'name': pokemon['name'].capitalize(),
             'id': id,
             'image': image_url
         })
     
     # We tell Flask to show the 'index.html' page and pass the list of Pokémon.
-    return render_template("index.html", pokemons=pokemons)
+    return render_template("index.html", card=cards)
 
 # Route for the Pokémon details page
 @app.route("/pokemon/<int:id>")
 def pokemon_detail(id):
     # We get detailed info for a specific Pokémon using its id.
-    response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{id}")
+    response = requests.get(f"https://db.ygoprodeck.com/api/v7/cardinfo.php/{id}")
     data = response.json()
     
     # We extract extra details like types, height, weight, and stats.
