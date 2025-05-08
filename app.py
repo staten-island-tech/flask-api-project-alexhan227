@@ -9,22 +9,22 @@ def index():
     # We ask the Pokémon API for the first 150 Pokémon.
     response = requests.get("https://db.ygoprodeck.com/api/v7/cardinfo.php")
     data = response.json()
-    pokemon_list = data['results']
+    card_list= data['results']
     
-    # We create a list to store details for each Pokémon.
+    # We create a list to store details for each .
     cards = []
     
-    for pokemon in pokemon_list:
+    for card in card_list:
         # Each Pokémon has a URL like "https://pokeapi.co/api/v2/pokemon/1/"
-        url = pokemon['url']
+        url = cards['url']
         parts = url.strip("/").split("/")
         id = parts[-1]  # The last part of the URL is the Pokémon's ID
         
         # We use the ID to build an image URL.
-        image_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png"
+        image_url = f""
         
         cards.append({
-            'name': pokemon['name'].capitalize(),
+            'name': card['name'].capitalize(),
             'id': id,
             'image': image_url
         })
@@ -34,32 +34,36 @@ def index():
 
 # Route for the Pokémon details page
 @app.route("/pokemon/<int:id>")
-def pokemon_detail(id):
+def card_detail(id):
     # We get detailed info for a specific Pokémon using its id.
     response = requests.get(f"https://db.ygoprodeck.com/api/v7/cardinfo.php/{id}")
     data = response.json()
     
     # We extract extra details like types, height, weight, and stats.
-    types = [t['type']['name'] for t in data['types']]
-    height = data.get('height')
-    weight = data.get('weight')
+    card_sets = data.get('cards_sets').capitalize()
     name = data.get('name').capitalize()
-    image_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png"
+    type = [t['type']['name'] for t in data['types']]
+    desc = data.get('desc')
+    humanReadableCardType = data.get('humanReadableCardType')
+    race = data.get('race')
+    archtype = data.get('archtype')
+    set_rarity = data.get('set_rarity')
+    image_url = f""
     
-    # Get the Pokémon’s base stats (like hp, attack, defense, etc.)
-    stat_names = [stat['stat']['name'] for stat in data['stats']]
-    stat_values = [stat['base_stat'] for stat in data['stats']]
     
     # We tell Flask to show the 'pokemon.html' page with all these details.
-    return render_template("pokemon.html", pokemon={
+    return render_template("yugioh.html", cards={
+        'card_sets': card_sets,
         'name': name,
         'id': id,
         'image': image_url,
-        'types': types,
-        'height': height,
-        'weight': weight,
-        'stat_names': stat_names,
-        'stat_values': stat_values
+        'type': type,
+        'humanReadableCardType': humanReadableCardType,
+        'race': race,
+        'archtype': archtype,
+        'set_rarity': set_rarity,
+        'desc': desc,
+
     })
 
 if __name__ == '__main__':
