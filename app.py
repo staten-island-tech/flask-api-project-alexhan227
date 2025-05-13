@@ -23,9 +23,12 @@ def index():
             monsters.append({
                 'name': name,
                 'index': index,
-                'image': image_url
+                'image': image_url,
+                'url': url
             })
-
         return render_template("index.html", monsters=monsters)
     else:
         return "Failed to retrieve monsters from API", 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
