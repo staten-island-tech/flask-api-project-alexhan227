@@ -10,12 +10,10 @@
       <h1>{{ monster.name }} Details</h1>
       <div class="monster-details">
         <img src="{{ monster.image }}" alt="{{ monster.name }}" />
-        <p><strong>ID:</strong> {{ monster.id }}</p>
 
       </div>
       <!-- Chart container -->
       <div class="monster-stats">
-        <canvas id="statsChart"></canvas>
       </div>
       <p><a href="{{ url_for('index') }}">Back to all monsters</a></p>
     </div>
