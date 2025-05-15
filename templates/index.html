@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>D&D  Monsters</title>
+    <title>D&D Monsters</title>
     <!-- Link to your CSS stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   </head>
@@ -10,16 +10,17 @@
     <div class="container">
       <h1>D&D Monsters</h1>
       <div class="card-container">
-        <!-- Loop through each Pokémon and wrap each card in a link -->
         {% for monster in monsters %}
-        <a href="https://www.dnd5eapi.co/api/monsters" class="card-link">
-          <div class="card">
-            <img src="{{ monster.image }}" alt="{{ monster.name }}" />
-            <div class="card-body">
-              <h5 class="card-title">{{ monster.name }}</h5>
+        <div class="monster-container">
+          <a href="{{ url_for(.) }}" class="card-link">
+            <div class="card">
+              <img src="{{ monster.image }}" alt="{{ monster.name }}" />
+              <div class="card-body">
+                <h5 class="card-title">{{ monster.name }}</h5>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
         {% endfor %}
       </div>
     </div>

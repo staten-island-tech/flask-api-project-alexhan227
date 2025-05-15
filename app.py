@@ -23,8 +23,7 @@ def index():
             monsters.append({
                 'name': name,
                 'index': index,
-                'image': image_url,
-                'url': url
+                'image': image_url
             })
         return render_template("index.html", monsters=monsters)
     else:

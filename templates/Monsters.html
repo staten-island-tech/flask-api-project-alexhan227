@@ -6,14 +6,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   </head>
   <body>
-    <div class="container">
-      <h1>{{ monster.name }} Details</h1>
-      <div class="monster-details">
-        <img src="{{ monster.image }}" alt="{{ monster.name }}" />
-
-      </div>
-      <!-- Chart container -->
-      <div class="monster-stats">
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <h1>{{ monster.name }} Details</h1>
+            <div class="monster-details">
+            <img src="{{ monster.image }}" alt="{{ monster.name }}" />
       </div>
       <p><a href="{{ url_for('index') }}">Back to all monsters</a></p>
     </div>
