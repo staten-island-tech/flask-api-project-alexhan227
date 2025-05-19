@@ -10,16 +10,14 @@
       <h1>D&D Monsters</h1>
       <div class="card-container">
         {% for monster in monsters_list %}
-        <div class="monster-container">
-          <a href="{{ monster.monster_url }}" target="_blank">
-            <div class="card">
+          <div class="card">
+            <a href="{{ monster.monster_url }}" target="_blank">
               <img src="https://placehold.co/200x200?text={{ monster.name | urlencode }}" alt="{{ monster.name }}" />
               <div class="card-body">
                 <h5 class="card-title">{{ monster.name }}</h5>
               </div>
-            </div>
-          </a>
-        </div>
+            </a>
+          </div>
         {% endfor %}
       </div>
     </div>
