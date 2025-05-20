@@ -12,8 +12,11 @@
           <div class="card">
             <h1>{{ monster.name }} Details</h1>
             <div class="monster-details">
-            <img src="{{ monster.image }}" alt="{{ monster.name }}" />
-            <p> <a href="{{url}}">https://www.dnd5eapi.co/api/monsters{name}</a></p>
+              <img src="https://www.dnd5eapi.co/api/images/monsters/aboleth.png" alt="Aboleth">
+
+
+          
+            <p> <a href="https://www.dnd5eapi.co/api/monsters{{monster.name}}">click me</a></p>
       </div>
       <p><a href="{{ url_for('index') }}">Back to all monsters</a></p>
     </div>

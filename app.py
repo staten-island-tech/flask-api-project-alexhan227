@@ -19,7 +19,7 @@ def index():
     for monster in monsters_list:
         name = monster['name']
         index = monster['index']
-        image_url = f"https://www.dnd5eapi.co/api/monsters/{index}"  # Placeholder, not an actual image
+        image_url = f"https://www.dnd5eapi.co/api/images/monsters/aboleth.png"  # Placeholder, not an actual image
         monster_url = f"https://www.dnd5eapi.co/api/monsters/{index}"
         monsters.append({
             'name': name,

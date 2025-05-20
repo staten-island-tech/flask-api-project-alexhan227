@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>D&D Monsters</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   </head>
   <body>
     <div class="container">
@@ -12,7 +12,7 @@
         {% for monster in monsters_list %}
           <div class="card">
             <a href="{{ monster.monster_url }}" target="_blank">
-              <img src="https://placehold.co/200x200?text={{ monster.name | urlencode }}" alt="{{ monster.name }}" />
+              <img src="{{ monster.image_url }}" alt="{{ monster.name }}" />
               <div class="card-body">
                 <h5 class="card-title">{{ monster.name }}</h5>
               </div>
