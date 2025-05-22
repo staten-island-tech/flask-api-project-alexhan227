@@ -31,10 +31,11 @@ def index():
 
     return render_template("index.html", monsters_list=monsters)
 
-@app.route("/details/<str:monster>/")
+@app.route("/details/<string:monster>")
 def details(monster):
     monster_url = f'https://www.dnd5eapi.co/api/monsters/{index}'
     response = requests.get(monster_url, headers=headers)
+    headers = {'Accept': 'application/json'}
     data2 = response.json
     monster_details = data2.get('resulst', [])
 
@@ -46,14 +47,19 @@ def details(monster):
         intelligence = monster_detail['intelligence']
         wisdom = monster_detail['wisdom']
         charisma = monster_detail['charisma']
+        special_abilities = monster_detail['special_abilities']
         monster_detail.append({
         "strength": strength,
         "dexterity": dexterity,
         "constitution": constitution,
         "intelligence": intelligence,
         "wisdom": wisdom,
-        "charisma": charisma,})
+        "charisma": charisma,
+        "special_abilities": special_abilities
+        })
 
+
+    return render_template("Monsters.html", monster_details=monster)
 
 if __name__ == '__main__':
     app.run(debug=True)
