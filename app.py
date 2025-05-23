@@ -19,12 +19,12 @@ def index():
     for monster in monsters_list:
         name = monster['name']
         index = monster['index']
-        image_url = f"https://www.dnd5eapi.co/api/images/monsters/aboleth.png"  # Placeholder, not an actual image
+        image_url = f"https://www.dnd5eapi.co/api/images/monsters/{index}.png"  # Placeholder, not an actual image
         monster_url = f"https://www.dnd5eapi.co/api/monsters/{index}"
         monsters.append({
             'name': name,
             'index': index,
-            'image': image_url,
+            'image_url': image_url,
             'monster_url': monster_url
         })
 
@@ -33,11 +33,13 @@ def index():
 
 @app.route("/details/<string:monster>")
 def details(monster):
-    monster_url = f'https://www.dnd5eapi.co/api/monsters/{index}'
-    response = requests.get(monster_url, headers=headers)
+    monster_url = f'https://www.dnd5eapi.co/api/monsters/{monster}'
+    print(monster_url)
     headers = {'Accept': 'application/json'}
-    data2 = response.json
-    monster_details = data2.get('resulst', [])
+    response = requests.get(monster_url, headers=headers)
+    data2 = response.json()
+    print("test",response)
+    monster_details = data2.get('results', [])
 
 
     for monster_detail in monster_details:
