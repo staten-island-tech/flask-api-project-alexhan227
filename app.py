@@ -33,35 +33,23 @@ def index():
 
 @app.route("/details/<string:monster>")
 def details(monster):
+
     monster_url = f'https://www.dnd5eapi.co/api/monsters/{monster}'
     print(monster_url)
     headers = {'Accept': 'application/json'}
     response = requests.get(monster_url, headers=headers)
     data2 = response.json()
     print("test",response)
-    monster_details = data2.get('results', [])
+    monster_details = data2
 
-
-    for monster_detail in monster_details:
-        strength = monster_detail['strength']
-        dexterity = monster_detail['dexterity']
-        constitution = monster_detail['constitution']
-        intelligence = monster_detail['intelligence']
-        wisdom = monster_detail['wisdom']
-        charisma = monster_detail['charisma']
-        special_abilities = monster_detail['special_abilities']
-        monster_detail.append({
-        "strength": strength,
-        "dexterity": dexterity,
-        "constitution": constitution,
-        "intelligence": intelligence,
-        "wisdom": wisdom,
-        "charisma": charisma,
-        "special_abilities": special_abilities
+    for monster in monster_details:
+        strength = monster['strength']
+        monster_details.append({
+            'strength': strength,
         })
 
 
-    return render_template("Monsters.html", monster_details=monster)
+    return render_template("Monsters.html", monster=monster_details)
 
 if __name__ == '__main__':
     app.run(debug=True)
