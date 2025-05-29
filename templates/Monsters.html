@@ -1,26 +1,95 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>{{ monster.name }} Details</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  </head>
-  <body>
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <h1>{{ monster.name }} Details</h1>
-            <div class="monster-details">
-              <img src="https://www.dnd5eapi.co/api/images/monsters/" alt="Aboleth">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ monster.name }} Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>{{ monster.name }}</h1>
 
+    <div class="monster-header">
+      <img src="https://www.dnd5eapi.co/api/images/monsters/{{ monster.index }}.png"
+           onerror="this.style.display='none';"
+           alt="{{ monster.name }}" class="monster-image" />
+
+      <div class="basic-info">
+        <p><strong>Size:</strong> {{ monster.size }}</p>
+        <p><strong>Type:</strong> {{ monster.type }}</p>
+        <p><strong>Alignment:</strong> {{ monster.alignment }}</p>
       </div>
-      <p><a href="{{ url_for('index') }}">Back to all monsters</a></p>
     </div>
 
-    <!-- Include Chart.js from a CDN -->
-    <script>
+    <div class="stats-section">
+      <h2>Stats</h2>
+    
+      {% set max_stat = 30 %}
+    
+      <div class="stat-bar">
+        <span>Strength</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ (monster.strength / max_stat) * 100 }}%;">
+            <span class="inside-value">{{ monster.strength }}</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="stat-bar">
+        <span>Dexterity</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ (monster.dexterity / max_stat) * 100 }}%;">
+            <span class="inside-value">{{ monster.dexterity }}</span>
+          </div>
+        </div>
+      </div>
 
-    </script>
-  </body>
+      <div class="stat-bar">
+        <span>Wisdom</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ (monster.wisdom / max_stat) * 100 }}%;">
+            <span class="inside-value">{{ monster.wisdom }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-bar">
+        <span>Constitution</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ (monster.constitution / max_stat) * 100 }}%;">
+            <span class="inside-value">{{ monster.constitution }}</span>
+          </div>
+        </div>
+      </div>
+    
+
+    {% if monster.special_abilities %}
+    <div class="abilities-section">
+      <h2>Special Abilities</h2>
+      <ul>
+        {% for ability in monster.special_abilities %}
+        <li>
+          <strong>{{ ability.name }}:</strong> {{ ability.desc }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if monster.actions %}
+    <div class="actions-section">
+      <h2>Actions</h2>
+      <ul>
+        {% for action in monster.actions %}
+        <li>
+          <strong>{{ action.name }}:</strong> {{ action.desc }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <p><a href="{{ url_for('index') }}">Back to all monsters</a></p>
+  </div>
+</body>
 </html>

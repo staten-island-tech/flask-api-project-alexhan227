@@ -42,13 +42,6 @@ def details(monster):
     print("test",response)
     monster_details = data2
 
-    for monster in monster_details:
-        strength = monster['strength']
-        monster_details.append({
-            'strength': strength,
-        })
-
-
     return render_template("Monsters.html", monster=monster_details)
 
 if __name__ == '__main__':

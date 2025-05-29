@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.monster-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.monster-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  background-color: #eee;
+}
+
+.stats-list,
+.abilities-section ul,
+.actions-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.stats-section,
+.abilities-section,
+.actions-section {
+  margin-top: 20px;
+}
+
+h1, h2 {
+  color: #222;
+}
+
+a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+.stat-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .stat-bar span {
+    width: 100px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .stat-bar .bar {
+    height: 20px;
+    background-color: #8fc3ff;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
