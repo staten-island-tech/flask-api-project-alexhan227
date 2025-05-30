@@ -8,10 +8,6 @@ def index():
     url = "https://www.dnd5eapi.co/api/monsters"
     headers = {'Accept': 'application/json'}
     response = requests.get(url, headers=headers)
-
-    if response.status_code != 200:
-        return "Failed to retrieve monsters from API", 500
-
     data = response.json()
     monsters_list = data.get('results', [])
 
@@ -35,11 +31,9 @@ def index():
 def details(monster):
 
     monster_url = f'https://www.dnd5eapi.co/api/monsters/{monster}'
-    print(monster_url)
     headers = {'Accept': 'application/json'}
     response = requests.get(monster_url, headers=headers)
     data2 = response.json()
-    print("test",response)
     monster_details = data2
 
     return render_template("Monsters.html", monster=monster_details)

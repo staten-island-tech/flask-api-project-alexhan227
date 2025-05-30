@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>D&D Monsters</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>D&D Monsters</h1>
-      <div class="card-container">
-        {% for monster in monsters_list %}
-          <div class="card">
-            <a href="{{ url_for('details', monster=monster.index) }}" target="_blank">
-              <img src="{{ monster.image_url }}" alt="{{ monster.name }}" />
-              <div class="card-body">
-                <h5 class="card-title">{{ monster.name }}</h5>
-              </div>
-            </a>
-          </div>
-        {% endfor %}
-      </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>D&D Monsters</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>D&D Monsters</h1>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        id="monsterSearch"
+        class="search-input"
+        placeholder="Search monsters by name..."
+      />
     </div>
-  </body>
+
+    <div class="card-container" id="monsterList">
+      {% for monster in monsters_list %}
+        <div class="card" data-name="{{ monster.name | lower }}">
+          <a href="{{ url_for('details', monster=monster.index) }}" target="_blank">
+            <img src="{{ monster.image_url }}" alt="{{ monster.name }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ monster.name }}</h5>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  </script>
+</body>
 </html>

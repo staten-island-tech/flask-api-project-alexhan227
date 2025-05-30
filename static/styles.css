@@ -43,3 +43,85 @@ body {
   flex-direction: column;
   height: 100%;
 }
+/* === Stat Bars === */
+.stats-section {
+  margin-top: 30px;
+}
+
+.stat-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stat-bar span {
+  width: 100px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.bar-container {
+  flex-grow: 1;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 24px;
+  position: relative;
+}
+
+.bar {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 4px 0 0 4px;
+  position: relative;
+  color: white;
+  text-align: right;
+  padding-right: 8px;
+  line-height: 24px;
+  font-weight: bold;
+  transition: width 0.3s ease;
+}
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card-title {
+  padding: 10px;
+  font-size: 1.1em;
+}

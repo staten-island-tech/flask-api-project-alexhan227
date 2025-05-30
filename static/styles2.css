@@ -73,3 +73,43 @@ a:hover {
     border-radius: 4px;
     transition: width 0.3s;
   }
+  .stat-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .stat-bar span {
+    width: 100px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .bar-container {
+    flex-grow: 1;
+    background-color: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 24px;
+    max-width: 300px;
+  }
+  
+  .bar {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 4px 0 0 4px;
+    position: relative;
+    color: white;
+    text-align: right;
+    padding-right: 8px;
+    line-height: 24px;
+    font-weight: bold;
+  }
+  
+  .inside-value {
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px;
+  }
+  

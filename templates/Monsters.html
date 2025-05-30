@@ -21,34 +21,32 @@
       </div>
     </div>
 
+    <!-- Stats Section -->
     <div class="stats-section">
       <h2>Stats</h2>
-    
       {% set max_stat = 30 %}
-    
+
+      {% set strength_width = (monster.strength / max_stat * 100) %}
+      {% set dexterity_width = (monster.dexterity / max_stat * 100) %}
+      {% set constitution_width = (monster.constitution / max_stat * 100) %}
+      {% set intelligence_width = (monster.intelligence / max_stat * 100) %}
+      {% set wisdom_width = (monster.wisdom / max_stat * 100) %}
+      {% set charisma_width = (monster.charisma / max_stat * 100) %}
+
       <div class="stat-bar">
         <span>Strength</span>
         <div class="bar-container">
-          <div class="bar" style="width: {{ (monster.strength / max_stat) * 100 }}%;">
+          <div class="bar" style="width: {{ strength_width }}%;">
             <span class="inside-value">{{ monster.strength }}</span>
-          </div>
-        </div>
-      </div>
-    
-      <div class="stat-bar">
-        <span>Dexterity</span>
-        <div class="bar-container">
-          <div class="bar" style="width: {{ (monster.dexterity / max_stat) * 100 }}%;">
-            <span class="inside-value">{{ monster.dexterity }}</span>
           </div>
         </div>
       </div>
 
       <div class="stat-bar">
-        <span>Wisdom</span>
+        <span>Dexterity</span>
         <div class="bar-container">
-          <div class="bar" style="width: {{ (monster.wisdom / max_stat) * 100 }}%;">
-            <span class="inside-value">{{ monster.wisdom }}</span>
+          <div class="bar" style="width: {{ dexterity_width }}%;">
+            <span class="inside-value">{{ monster.dexterity }}</span>
           </div>
         </div>
       </div>
@@ -56,13 +54,41 @@
       <div class="stat-bar">
         <span>Constitution</span>
         <div class="bar-container">
-          <div class="bar" style="width: {{ (monster.constitution / max_stat) * 100 }}%;">
+          <div class="bar" style="width: {{ constitution_width }}%;">
             <span class="inside-value">{{ monster.constitution }}</span>
           </div>
         </div>
       </div>
-    
 
+      <div class="stat-bar">
+        <span>Intelligence</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ intelligence_width }}%;">
+            <span class="inside-value">{{ monster.intelligence }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-bar">
+        <span>Wisdom</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ wisdom_width }}%;">
+            <span class="inside-value">{{ monster.wisdom }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-bar">
+        <span>Charisma</span>
+        <div class="bar-container">
+          <div class="bar" style="width: {{ charisma_width }}%;">
+            <span class="inside-value">{{ monster.charisma }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Special Abilities -->
     {% if monster.special_abilities %}
     <div class="abilities-section">
       <h2>Special Abilities</h2>
@@ -76,6 +102,7 @@
     </div>
     {% endif %}
 
+    <!-- Actions -->
     {% if monster.actions %}
     <div class="actions-section">
       <h2>Actions</h2>
