@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>D&D Monsters</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
 </head>
 <body>
   <div class="container">
@@ -32,6 +33,17 @@
     </div>
   </div>
 
+  <script>
+    const searchInput = document.getElementById("monsterSearch");
+    const monsterCards = document.querySelectorAll(".card");
+
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      monsterCards.forEach(card => {
+        const name = card.getAttribute("data-name");
+        card.style.display = name.includes(query) ? "block" : "none";
+      });
+    });
   </script>
 </body>
 </html>
